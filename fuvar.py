@@ -1,9 +1,9 @@
 class Taxi:
-    def __init__(self,ID,start,leng,km,dollar,plus,howbuy) -> None:
+    def __init__(self,ID,start,leng,mf,dollar,plus,howbuy) -> None:
         self.ID = ID
         self.start = start
         self.leng = leng
-        self.km = km
+        self.mf = float(mf)
         self.dollar = float(dollar)
         self.plus = plus
         self.howbuy = howbuy
@@ -13,6 +13,7 @@ taxi = []
 file = open("fuvar.csv", "rt", encoding="utf-8")
 count = 0
 money = 0
+km = 0
 stat = {}
 file.readline()
 for row in file:
@@ -30,8 +31,13 @@ for i in taxi:
         stat[i.howbuy] += 1
     else:
         stat[i.howbuy] = 1
+    
+    km += i.mf * 1.6
+
 
 print(f"4. feladat: {count} fuvar alatt: {money}$")
 print("5.feladat:")
 for i,k in stat.items():
     print("\t", i ," : ", k, "fuvar")
+
+print(f"6.feladat: {km.}km")
