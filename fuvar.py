@@ -13,6 +13,7 @@ taxi = []
 file = open("fuvar.csv", "rt", encoding="utf-8")
 count = 0
 money = 0
+stat = {}
 file.readline()
 for row in file:
     row = row.strip().replace(",", ".").split(";")
@@ -25,4 +26,12 @@ for i in taxi:
         count += 1
         money += i.dollar
 
+    if i.howbuy in stat.keys():
+        stat[i.howbuy] += 1
+    else:
+        stat[i.howbuy] = 1
+
 print(f"4. feladat: {count} fuvar alatt: {money}$")
+print("5.feladat:")
+for i,k in stat.items():
+    print("\t", i ," : ", k, "fuvar")
